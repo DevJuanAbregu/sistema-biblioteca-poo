@@ -12,31 +12,21 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
+    public String getNombre() { return nombre; }
+    public String getTipo() { return tipo; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setNombre(String nombre) {
+    public void modificar(String nombre, String tipo) {
         this.nombre = nombre;
-    }
-
-    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
     public void mostrarInfo() {
-        System.out.println(
-                "ID: " + id +
-                        " | Nombre: " + nombre +
-                        " | Tipo: " + tipo
-        );
+        System.out.println("ID: " + id +
+                " | Nombre: " + nombre +
+                " | Tipo: " + tipo);
     }
 }
