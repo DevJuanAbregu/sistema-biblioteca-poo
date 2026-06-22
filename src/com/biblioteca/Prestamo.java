@@ -14,38 +14,29 @@ public class Prestamo {
         this.id = id;
         this.libro = libro;
         this.usuario = usuario;
-
         this.fechaPrestamo = LocalDate.now();
         this.fechaDevolucion = null;
-
         libro.setDisponible(false);
     }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     public void registrarDevolucion() {
         fechaDevolucion = LocalDate.now();
         libro.setDisponible(true);
     }
 
+    public LocalDate calcularFechaDevolucion() {
+        return fechaPrestamo.plusDays(7);
+    }
+
     public void mostrarInfo() {
+        String estado = (fechaDevolucion == null) ? "Pendiente" : fechaDevolucion.toString();
 
-        String devolucion;
-
-        if (fechaDevolucion == null) {
-            devolucion = "Pendiente";
-        } else {
-            devolucion = fechaDevolucion.toString();
-        }
-
-        System.out.println(
-                "ID Prestamo: " + id +
-                        " | Libro: " + libro.getTitulo() +
-                        " | Usuario: " + usuario.getNombre() +
-                        " | Fecha Prestamo: " + fechaPrestamo +
-                        " | Fecha Devolucion: " + devolucion
-        );
+        System.out.println("ID: " + id +
+                " | Libro: " + libro.getTitulo() +
+                " | Usuario: " + usuario.getNombre() +
+                " | Fecha Préstamo: " + fechaPrestamo +
+                " | Fecha Devolución: " + estado);
     }
 }
